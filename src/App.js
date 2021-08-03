@@ -12,7 +12,7 @@ import ExampleB from 'components/ExampleB';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.githubRepoURL = '#CHANGE ME';
+        this.githubRepoURL = 'https://github.com/Xiart/ORKG_TIB-47-2021.git';
     }
 
     render() {

@@ -27,17 +27,18 @@ class ExampleB extends Component {
         // create an authors array;
         const authorStatements = this.state.requestedData.statementsData.content.filter(item => item.predicate.id === 'P27');
         const doiStatement = this.state.requestedData.statementsData.content.filter(item => item.predicate.id === 'P26');
-        let doiValue = '';
+        let doiValue = 'https://doi.org/';
         if (doiStatement[0] && doiStatement[0].object) {
-            doiValue = doiStatement[0].object.label;
+            doiValue += doiStatement[0].object.label;
         }
         if (!this.state.requestedData) {
             return <div>Some error</div>;
         } else {
             return (
+                 
                 <div>
                     <div>
-                        Title: <b>{this.state.requestedData.resourceMetaData.label}</b>;
+                        Title: <h3>{this.state.requestedData.resourceMetaData.label}</h3>;
                     </div>
                     <div>
                         Authors:{' '}
@@ -45,8 +46,8 @@ class ExampleB extends Component {
                             return item.object.label + '; ';
                         })}
                     </div>
-                    <div>Paper Data:</div>
-                    <div>Paper doi: {doiValue}</div>
+                    <div>Paper Data:</div>                    
+                    <div>Paper doi: <b><a target='_blank' style={{color: 'blue'}} href={doiValue}>{doiValue}</a></b></div>
                 </div>
             );
         }

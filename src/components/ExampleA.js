@@ -4,6 +4,11 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { getComparisonById } from 'network/networkRequests';
 
+//Datatable Modules
+import "datatables.net/js/jquery.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import $ from 'jquery';
+
 class ExampleA extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +21,8 @@ class ExampleA extends Component {
     componentDidMount() {
         // fetch data
         this.getData();
+        
+        $('#ComparisonTable').DataTable();
     }
 
     getData = () => {
@@ -43,7 +50,7 @@ class ExampleA extends Component {
                             return item.object.label + '; ';
                         })}
                     </div>
-                    <div>Comparison Data:</div>
+                    <div className='row'><div className='col-lg-6 col-md-6 col-sm-12'>Comparison Data:</div><div className='col-lg-6 col-md-6 col-sm-12'><input id='txt_search' style={{float: 'right'}} type='text' value='Search..'></input></div></div>
                     {this.renderComparisonTable()}
                 </div>
             );
@@ -53,10 +60,11 @@ class ExampleA extends Component {
     renderComparisonTable = () => {
         const dataFrame = this.state.requestedData.comparisonData;
         return (
-            <table style={{ width: '100%', overflow: 'auto', display: 'block' }}>
+            <table id='ComparisonTable' style={{ width: '100%', overflow: 'auto', display: 'block' }}>
                 {/*  define headers*/}
                 <thead style={{ borderTop: '1px solid black', borderBottom: '1px solid black' }}>
                     <tr>
+                       
                         <th
                             style={{
                                 whiteSpace: 'nowrap',
@@ -73,6 +81,7 @@ class ExampleA extends Component {
                             .filter(property => property.active === true)
                             .map(property => {
                                 return (
+                                    
                                     <th
                                         key={property.label}
                                         style={{
@@ -93,6 +102,7 @@ class ExampleA extends Component {
                     {Object.keys(dataFrame.data).map((data, id) => {
                         return (
                             <tr key={'tr_id' + id} style={{ border: '1px solid black', borderTop: 'none' }}>
+                               
                                 <td
                                     key={'td_id_' + id}
                                     style={{
@@ -140,7 +150,12 @@ class ExampleA extends Component {
                     }}
                 >
                     {dataValues.map(val => {
-                        return val.label + ' ';
+                        if((''+val.label).includes('http')){ 
+
+                            return <><a href={val.label} target='_blank' style={{color: 'blue'}}>{val.label}</a><br></br></>
+                        }
+                        else{return val.label + ' ';}
+                        
                     })}
                 </td>
             );
