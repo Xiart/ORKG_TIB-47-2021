@@ -27,6 +27,7 @@ class ExampleB extends Component {
         // create an authors array;
         const authorStatements = this.state.requestedData.statementsData.content.filter(item => item.predicate.id === 'P27');
         const doiStatement = this.state.requestedData.statementsData.content.filter(item => item.predicate.id === 'P26');
+        // ZIYAD - CrossRef to digital object identity
         let doiValue = 'https://doi.org/';
         if (doiStatement[0] && doiStatement[0].object) {
             doiValue += doiStatement[0].object.label;
@@ -38,7 +39,7 @@ class ExampleB extends Component {
                  
                 <div>
                     <div>
-                        Title: <h3>{this.state.requestedData.resourceMetaData.label}</h3>;
+                        Title: <b>{this.state.requestedData.resourceMetaData.label}</b>
                     </div>
                     <div>
                         Authors:{' '}
@@ -46,7 +47,8 @@ class ExampleB extends Component {
                             return item.object.label + '; ';
                         })}
                     </div>
-                    <div>Paper Data:</div>                    
+                    <div>Paper Data:</div>    
+                     {/* ZIYAD - CrossRef clickable                 */}
                     <div>Paper doi: <b><a target='_blank' style={{color: 'blue'}} href={doiValue}>{doiValue}</a></b></div>
                 </div>
             );
