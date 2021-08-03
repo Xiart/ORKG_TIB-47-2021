@@ -48,7 +48,7 @@ class ExampleB extends Component {
                         })}
                     </div>
                     <div>Paper Data:</div>    
-                     {/* ZIYAD - CrossRef clickable                 */}
+                     {/* ZIYAD - CrossRef clickable       (Task 1)          */}
                     <div>Paper doi: <b><a target='_blank' style={{color: 'blue'}} href={doiValue}>{doiValue}</a></b></div>
                 </div>
             );

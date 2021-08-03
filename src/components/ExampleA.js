@@ -4,7 +4,7 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { getComparisonById } from 'network/networkRequests';
 
-// ZIYAD - Datatable Modules
+// ZIYAD - Datatable Modules (Task 3)
 import $ from 'jquery';
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 $.DataTable = require('datatables.net');
@@ -29,7 +29,7 @@ class ExampleA extends Component {
     getData = () => {
         getComparisonById('R44930').then(dataFrame => {
             this.setState({ requestedData: dataFrame, loading: false });
-            // ZIYAD - To Initialize Datatable Plugin of jQuery
+            // ZIYAD - To Initialize Datatable Plugin of jQuery (Task 3)
             $(this.refs.main).DataTable()
         });
     };
@@ -154,7 +154,7 @@ class ExampleA extends Component {
                     }}
                 >
                     {dataValues.map(val => {
-                        // ZIYAD - TO create links for http/https data
+                        // ZIYAD - TO create links for http/https data (Task 2)
                         if (('' + val.label).includes('http')) {
 
                             return <><a href={val.label} target='_blank' style={{ color: 'blue' }}>{val.label}</a><br></br></>
