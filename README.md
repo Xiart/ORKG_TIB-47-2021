@@ -1,18 +1,19 @@
 # ORKG Pages Template
-This repository is mirrored on GitHub https://github.com/TIBHannover/orkg-pages-template. 
+This repository is mirrored on GitHub https://github.com/Xiart/ORKG_TIB-47-2021. 
 
 
 It provides a simple example how to create a React based homepage that communicates with the ORKG backend. 
 
 This example implements simple network functions which provide access to the ORKG backend and retrieve specific results.
 
-If you have suggestions or find issues, please report them on the GitLab repository: https://gitlab.com/TIBHannover/orkg/orkg-pages-template
 
 
 # How to Use
 You can simply fork the project on GitHub.
 
 Then clone your repository to your local machine and run: `npm install`
+
+This repository uses JQuery Plugin DataTable.net to enhance the overall experience of a table.
 
 This will install all dependencies for the example project. 
 
