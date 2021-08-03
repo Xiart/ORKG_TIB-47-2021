@@ -21,8 +21,11 @@ class ExampleA extends Component {
     componentDidMount() {
         // fetch data
         this.getData();
+        $(document).ready()
+        {
+            $('#ComparisonTable').DataTable();
+        }
         
-        $('#ComparisonTable').DataTable();
     }
 
     getData = () => {
